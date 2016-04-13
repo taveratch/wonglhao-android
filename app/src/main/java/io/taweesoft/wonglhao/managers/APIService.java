@@ -15,7 +15,7 @@ import retrofit2.http.Query;
 public interface APIService {
 
     @POST("signin")
-    Call<User> getUser(@Body RequestBody requestBody);
+    Call<User> signin(@Body RequestBody requestBody);
 
     @POST("signup")
     Call<User> signup(@Body User user);
