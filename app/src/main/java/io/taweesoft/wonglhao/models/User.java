@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by TAWEESOFT on 4/13/16 AD.
  */
 public class User {
-    @SerializedName("_id") private String id;
+    @SerializedName("_id")  String id;
     @SerializedName("username") String username;
-    @SerializedName("f_name") private String firstname;
-    @SerializedName("l_name") private String lastname;
-    @SerializedName("email") private String email;
+    @SerializedName("f_name") String firstname;
+    @SerializedName("l_name") String lastname;
+    @SerializedName("email")  String email;
     @SerializedName("password") String password;
-    @SerializedName("gender") private String gender;
+    @SerializedName("gender")  String gender;
 
     public String getId() {
         return id;

@@ -1,5 +1,11 @@
 package io.taweesoft.wonglhao.managers;
 
+import org.json.JSONObject;
+
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -21,5 +27,9 @@ public class HttpManager {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(apiServiceClass);
+    }
+
+    public RequestBody createRequestBody (Map<String, String> map) {
+        return RequestBody.create(MediaType.parse("application/json") , new JSONObject(map).toString());
     }
 }
