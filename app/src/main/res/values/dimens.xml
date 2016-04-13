@@ -6,4 +6,6 @@
     <dimen name="textSecondarySize">13sp</dimen>
     <dimen name="containerMargin">30dp</dimen>
     <dimen name="itemMargin">15dp</dimen>
+    <dimen name="logoSizeBig">120dp</dimen>
+    <dimen name="logoSizeNormal">80dp</dimen>
 </resources>
