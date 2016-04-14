@@ -96,7 +96,7 @@
                 android:text="Male"
                 android:id="@+id/rbMale"
                 android:layout_weight="1"
-                android:checked="false" />
+                android:checked="true" />
 
             <RadioButton
                 android:layout_width="wrap_content"

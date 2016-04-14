@@ -2,10 +2,12 @@ package io.taweesoft.wonglhao.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by TAWEESOFT on 4/13/16 AD.
  */
-public class User {
+public class User implements Serializable{
     @SerializedName("_id")  String id;
     @SerializedName("username") String username;
     @SerializedName("f_name") String firstname;
@@ -13,6 +15,7 @@ public class User {
     @SerializedName("email")  String email;
     @SerializedName("password") String password;
     @SerializedName("gender")  String gender;
+    @SerializedName("confirm_password") String confirmPassword;
 
     public String getId() {
         return id;
@@ -68,5 +71,13 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

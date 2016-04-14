@@ -70,7 +70,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSignup)
     public void signup() {
-        // TODO: 4/13/16 AD Navigate to SignupActivity
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 
 }
