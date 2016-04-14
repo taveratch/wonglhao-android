@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick(R.id.tvSignup)
+    @OnClick(R.id.btnSignup)
     public void signup() {
         // TODO: 4/13/16 AD Navigate to SignupActivity
     }
