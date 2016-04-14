@@ -28,4 +28,13 @@
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:singleLine">true</item>
     </style>
+
+    <style name="ToolBarStyle">
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:background">@color/colorDarkGray</item>
+        <item name="titleTextColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+    </style>
+
 </resources>

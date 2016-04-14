@@ -10,4 +10,8 @@
     <string name="lastname">Lastname</string>
     <string name="email">Email</string>
     <string name="confirmPassword">Confirm password</string>
+    <string name="promotion">Promotions</string>
+    <string name="pubBar">Pubs \u0026 Bars</string>
+    <string name="search">Search</string>
+    <string name="nearBy">Near by</string>
 </resources>

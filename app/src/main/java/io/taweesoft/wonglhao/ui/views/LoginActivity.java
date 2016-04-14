@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
+import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.managers.Utility;
 import io.taweesoft.wonglhao.models.User;
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     // TODO: 4/13/16 AD  Save into SharedPreference
                     User user = response.body();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    DataStorage.user = user;
                     startActivity(intent);
                 }else{
                     try {
