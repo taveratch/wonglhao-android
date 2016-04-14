@@ -1,11 +1,13 @@
 package io.taweesoft.wonglhao.managers;
 
+import io.taweesoft.wonglhao.models.Element;
 import io.taweesoft.wonglhao.models.User;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -19,5 +21,8 @@ public interface APIService {
 
     @POST("signup")
     Call<User> signup(@Body User user);
+
+    @GET("getAllPromotions")
+    Call<Element> getAllPromotions(@Query("limit") int limit);
 
 }
