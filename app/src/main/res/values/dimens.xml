@@ -8,4 +8,6 @@
     <dimen name="itemMargin">15dp</dimen>
     <dimen name="logoSizeBig">120dp</dimen>
     <dimen name="logoSizeNormal">80dp</dimen>
+    <dimen name="authButtonBigSize">60dp</dimen>
+    <dimen name="authButtonNormalSize">50dp</dimen>
 </resources>
