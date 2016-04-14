@@ -18,7 +18,7 @@
     <style name="labelHeader">
         <item name="android:textColor">#FFF</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/textPrimarySize</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="labelText" parent="labelHeader">
@@ -35,6 +35,7 @@
         <item name="titleTextColor">@color/colorPrimary</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:elevation">6dp</item>
     </style>
 
 </resources>
