@@ -1,11 +1,13 @@
 package io.taweesoft.wonglhao.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -37,12 +39,20 @@ public class SideBarAdapter extends ArrayAdapter<SideBarItem> {
         SideBarItem item = getItem(position);
         holder.imgIcon.setImageResource(item.getImg());
         holder.tvItemName.setText(item.getText());
+        if(item.isActive()){
+            holder.container.setBackgroundColor(getContext().getResources().getColor(R.color.colorPrimary));
+            holder.tvItemName.setTextColor(Color.WHITE);
+        }else{
+            holder.container.setBackgroundColor(0);
+            holder.tvItemName.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+        }
         return convertView;
     }
 
     class ViewHolder {
         @Bind(R.id.imgIcon) public ImageView imgIcon;
         @Bind(R.id.tvItemName) public TextView tvItemName;
+        @Bind(R.id.container) public LinearLayout container;
 
         public ViewHolder(View v) {
             ButterKnife.bind(this,v);

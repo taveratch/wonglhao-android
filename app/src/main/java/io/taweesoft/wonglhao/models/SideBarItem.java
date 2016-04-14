@@ -6,7 +6,7 @@ package io.taweesoft.wonglhao.models;
 public class SideBarItem {
     private int img;
     private String text;
-
+    private boolean isActive = false;
     public int getImg() {
         return img;
     }
@@ -18,5 +18,13 @@ public class SideBarItem {
     public SideBarItem(int img, String text) {
         this.img = img;
         this.text = text;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
