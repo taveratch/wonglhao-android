@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
     </style>
 
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">
@@ -22,5 +23,9 @@
 
     <style name="labelText" parent="labelHeader">
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:singleLine">true</item>
     </style>
 </resources>
