@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
+import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.managers.Utility;
 import io.taweesoft.wonglhao.models.User;
@@ -87,7 +88,7 @@ public class SignupActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     //Go to main activity
                     Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                    intent.putExtra("user" , user);
+                    DataStorage.user = user;
                     startActivity(intent);
                     finish();
                 }else{
