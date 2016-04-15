@@ -12,4 +12,5 @@
     <dimen name="authButtonNormalSize">50dp</dimen>
     <dimen name="accountImgSize">50dp</dimen>
     <dimen name="iconImgSize">25dp</dimen>
+    <dimen name="smallIconSize">13dp</dimen>
 </resources>

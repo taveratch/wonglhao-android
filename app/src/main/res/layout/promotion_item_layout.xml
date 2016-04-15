@@ -15,14 +15,14 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:id="@+id/imgPromotion"
+                android:id="@+id/imgBar"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/imgPromotion"
+                android:layout_below="@+id/imgBar"
                 android:layout_alignParentStart="true"
                 android:background="@color/colorSecondaryDark"
                 android:gravity="center_vertical">
@@ -52,7 +52,7 @@
                         android:text="New Text"
                         android:id="@+id/tvBarName"
                         style="@style/labelText"
-                        android:layout_below="@+id/tvPromotionName"
+                        android:layout_below="@+id/tvPro"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="2dp"
                         android:textColor="#FFF" />

@@ -25,4 +25,7 @@ public interface APIService {
     @GET("getAllPromotions")
     Call<Element> getAllPromotions(@Query("limit") int limit);
 
+    @GET("getAllBar")
+    Call<Element> getAllBar(@Query("limit") int limit);
+
 }

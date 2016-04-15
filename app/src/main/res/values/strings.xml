@@ -14,4 +14,6 @@
     <string name="pubBar">Pubs \u0026 Bars</string>
     <string name="search">Search</string>
     <string name="nearBy">Near by</string>
+    <string name="peopleWereHere">people were here</string>
+    <string name="reviews">Reviews</string>
 </resources>
