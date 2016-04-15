@@ -81,7 +81,7 @@
             android:layout_height="@dimen/authButtonBigSize"
             android:id="@+id/btnSignin"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/check_circle_yellow"
+            android:background="@drawable/check_circle_white"
             android:layout_above="@+id/btnSignup"
             android:layout_centerHorizontal="true" />
 

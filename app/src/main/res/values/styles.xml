@@ -18,11 +18,12 @@
     <style name="labelHeader">
         <item name="android:textColor">#FFF</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/textPrimarySize</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="labelText" parent="labelHeader">
         <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/textSecondarySize</item>
     </style>
 
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
@@ -31,10 +32,11 @@
 
     <style name="ToolBarStyle">
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="android:background">@color/colorDarkGray</item>
-        <item name="titleTextColor">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="titleTextColor">#FFF</item>
+        <item name="android:textColor">#FFF</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:elevation">6dp</item>
     </style>
 
 </resources>

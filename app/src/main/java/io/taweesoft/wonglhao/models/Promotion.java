@@ -11,6 +11,7 @@ public class Promotion {
     @SerializedName("bar_id") private String barId;
     @SerializedName("bar_name") private String barName;
     @SerializedName("description") private String description;
+    @SerializedName("banner_url") private String bannerUrl;
 
     public String getId() {
         return id;
@@ -50,5 +51,13 @@ public class Promotion {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBannerUrl() {
+        return bannerUrl;
+    }
+
+    public void setBannerUrl(String bannerUrl) {
+        this.bannerUrl = bannerUrl;
     }
 }

@@ -41,10 +41,12 @@ public class SideBarAdapter extends ArrayAdapter<SideBarItem> {
         holder.tvItemName.setText(item.getText());
         if(item.isActive()){
             holder.container.setBackgroundColor(getContext().getResources().getColor(R.color.colorPrimary));
-            holder.tvItemName.setTextColor(Color.WHITE);
+            holder.tvItemName.setTextColor(getContext().getResources().getColor(R.color.colorPrimaryDark));
+            holder.imgIcon.setColorFilter(getContext().getResources().getColor(R.color.colorPrimaryDark));
         }else{
             holder.container.setBackgroundColor(0);
             holder.tvItemName.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+            holder.imgIcon.setColorFilter(getContext().getResources().getColor(R.color.colorPrimary));
         }
         return convertView;
     }
