@@ -2,47 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/container">
-
-        <ImageView
+        android:layout_height="170dp"
+        android:layout_margin="@dimen/itemMargin">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imgPromotion"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/container">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_vertical|center_horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/imgPromotion"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/tvPromotionName"
-                style="@style/labelHeader"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/imgPromotion"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorSecondaryDark"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/tvBarName"
-                style="@style/labelText"
-                android:layout_below="@+id/tvPromotionName"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp" />
-        </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/itemMargin">
 
-    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text"
+                        android:id="@+id/tvPromotionName"
+                        style="@style/labelHeader"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="#FFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text"
+                        android:id="@+id/tvBarName"
+                        style="@style/labelText"
+                        android:layout_below="@+id/tvPromotionName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#FFF" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>
