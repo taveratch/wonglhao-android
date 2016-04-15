@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -30,7 +29,7 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionAdapter.View
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        @Bind(R.id.imgPromotion) public ImageView imgPromotion;
+        @Bind(R.id.imgBar) public ImageView imgPromotion;
         @Bind(R.id.tvPromotionName) public TextView tvPromotionName;
         @Bind(R.id.tvBarName) public TextView tvBarName;
 
