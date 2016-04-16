@@ -18,6 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
+import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.managers.MyObservable;
 import io.taweesoft.wonglhao.models.Bar;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 /**
  * Created by TAWEESOFT on 4/14/16 AD.
  */
-public class PubsFragment extends Fragment implements MyObservable {
+public class BarsFragment extends Fragment implements MyObservable {
 
     private Observable observable = new Observable();
 
@@ -51,7 +52,13 @@ public class PubsFragment extends Fragment implements MyObservable {
             public void onResponse(Call<Element> call, Response<Element> response) {
                 if(response.isSuccessful()){
                     List<Bar> barList = response.body().getBarList();
-                    RecyclerView.LayoutManager llm = new LinearLayoutManager(PubsFragment.this.getContext());
+
+                    //Save all bars to barMap for using in another activity.
+                    DataStorage.barMap.clear();
+                    for(Bar bar : barList)
+                        DataStorage.barMap.put(bar.getId() , bar);
+
+                    RecyclerView.LayoutManager llm = new LinearLayoutManager(BarsFragment.this.getContext());
                     rv.setLayoutManager(llm);
                     BarAdapter adapter = new BarAdapter(barList);
                     rv.setAdapter(adapter);

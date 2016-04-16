@@ -3,7 +3,6 @@ package io.taweesoft.wonglhao.ui.views;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -11,33 +10,21 @@ import android.widget.TextView;
 
 import net.simonvt.menudrawer.MenuDrawer;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.taweesoft.wonglhao.R;
-import io.taweesoft.wonglhao.managers.APIService;
 import io.taweesoft.wonglhao.managers.DataStorage;
-import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.models.SideBarItem;
-import io.taweesoft.wonglhao.models.User;
 import io.taweesoft.wonglhao.ui.adapters.SideBarAdapter;
 import io.taweesoft.wonglhao.ui.fragments.NearByFragment;
 import io.taweesoft.wonglhao.ui.fragments.PromotionFragment;
-import io.taweesoft.wonglhao.ui.fragments.PubsFragment;
+import io.taweesoft.wonglhao.ui.fragments.BarsFragment;
 import io.taweesoft.wonglhao.ui.fragments.SearchFragment;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements Observer{
 
@@ -45,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
     private List<SideBarItem> sideBarItemList;
     private int currentActivatedItem = 0;
     private PromotionFragment promotionFragment;
-    private PubsFragment pubsFragment;
+    private BarsFragment pubsFragment;
     private SearchFragment searchFragment;
     private NearByFragment nearByFragment;
 
@@ -67,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
 
     public void initComponents() {
         promotionFragment = new PromotionFragment();
-        pubsFragment = new PubsFragment();
+        pubsFragment = new BarsFragment();
         searchFragment = new SearchFragment();
         nearByFragment = new NearByFragment();
         promotionFragment.addObserver(this);
