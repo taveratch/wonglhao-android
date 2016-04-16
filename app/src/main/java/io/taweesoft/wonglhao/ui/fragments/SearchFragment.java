@@ -36,7 +36,7 @@ public class SearchFragment extends Fragment implements MyObservable{
 
     public void initComponents() {
         toolbar.setTitle(getString(R.string.search));
-        toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
