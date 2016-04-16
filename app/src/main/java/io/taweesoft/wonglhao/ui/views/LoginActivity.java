@@ -1,5 +1,6 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSignin)
     public void signin() {
+        //Show loading dialog
+        final ProgressDialog dialog = ProgressDialog.show(this,null,getString(R.string.pleaseWait));
+
         String username = etUsername.getText().toString().trim().toLowerCase();
         String password = etPassword.getText().toString().trim();
         Map<String,String> map = new HashMap<>();
@@ -58,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     Log.e("errors" , response.raw().toString());
                 }
+                dialog.dismiss();
             }
 
             @Override
