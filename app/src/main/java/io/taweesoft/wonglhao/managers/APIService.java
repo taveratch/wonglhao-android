@@ -28,4 +28,7 @@ public interface APIService {
     @GET("getAllBar")
     Call<Element> getAllBar(@Query("limit") int limit);
 
+    @POST("searchBar")
+    Call<Element> searchBar(@Body RequestBody requestBody);
+
 }
