@@ -3,6 +3,7 @@ package io.taweesoft.wonglhao.ui.views;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.models.Bar;
@@ -49,5 +51,10 @@ public class BarActivity extends AppCompatActivity {
                 .centerCrop()
                 .crossFade()
                 .into(imgBar);
+    }
+
+    @OnClick(R.id.btnBack)
+    public void back() {
+        finish();
     }
 }

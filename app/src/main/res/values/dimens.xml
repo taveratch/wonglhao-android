@@ -14,4 +14,5 @@
     <dimen name="iconImgSize">25dp</dimen>
     <dimen name="smallIconSize">13dp</dimen>
     <dimen name="itemMarginSmall">5dp</dimen>
+    <dimen name="backBtnSize">35dp</dimen>
 </resources>
