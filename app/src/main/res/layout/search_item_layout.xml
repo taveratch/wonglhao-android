@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:paddingTop="@dimen/itemMargin"
+    android:paddingBottom="@dimen/itemMargin">
 
     <ImageView
         android:layout_width="@dimen/iconImgSize"
