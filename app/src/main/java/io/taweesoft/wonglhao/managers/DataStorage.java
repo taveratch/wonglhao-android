@@ -1,5 +1,9 @@
 package io.taweesoft.wonglhao.managers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.User;
 
 /**
@@ -7,4 +11,5 @@ import io.taweesoft.wonglhao.models.User;
  */
 public class DataStorage {
     public static User user;
+    public static Map<String ,Bar> barMap = new HashMap<>();
 }
