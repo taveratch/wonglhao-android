@@ -2,10 +2,12 @@ package io.taweesoft.wonglhao.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by TAWEESOFT on 4/15/16 AD.
  */
-public class Review {
+public class Review implements Serializable{
     @SerializedName("review") private String text;
     @SerializedName("username") private String username;
 

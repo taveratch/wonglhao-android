@@ -18,4 +18,7 @@
     <string name="reviews">Reviews</string>
     <string name="pleaseWait">Please wait</string>
     <string name="pubBarName">Pubs \u0026 Bars name</string>
+    <string name="type">Type</string>
+    <string name="description">Description</string>
+    <string name="map">Map</string>
 </resources>

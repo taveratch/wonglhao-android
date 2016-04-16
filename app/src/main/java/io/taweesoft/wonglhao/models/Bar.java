@@ -2,12 +2,13 @@ package io.taweesoft.wonglhao.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by TAWEESOFT on 4/15/16 AD.
  */
-public class Bar {
+public class Bar implements Serializable{
     @SerializedName("_id") private String id;
     @SerializedName("name") private String name;
     @SerializedName("lat") private double lat;
@@ -20,6 +21,7 @@ public class Bar {
     @SerializedName("checked_in") private List<String> checked_in;
     @SerializedName("promotions") private List<Promotion> promotionList;
     @SerializedName("review") private List<Review> reviewList;
+    @SerializedName("type") private String type;
 
     public String getId() {
         return id;
@@ -115,5 +117,13 @@ public class Bar {
 
     public void setReviewList(List<Review> reviewList) {
         this.reviewList = reviewList;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
