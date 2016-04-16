@@ -29,6 +29,6 @@ public interface APIService {
     Call<Element> getAllBar(@Query("limit") int limit);
 
     @POST("searchBar")
-    Call<Element> searchBar(@Query("text") String word);
+    Call<Element> searchBar(@Body RequestBody requestBody);
 
 }
