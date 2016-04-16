@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingTop="@dimen/itemMargin"
+    android:paddingBottom="@dimen/itemMargin">
+
+    <ImageView
+        android:layout_width="@dimen/iconImgSize"
+        android:layout_height="@dimen/iconImgSize"
+        android:id="@+id/imageView7"
+        android:src="@drawable/ic_pin_drop_black_24dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/itemMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/tvName"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textPrimarySize" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/tvCheckedIn"
+            android:textColor="@color/colorBaseDark"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/textSecondarySize" />
+    </LinearLayout>
+</LinearLayout>
