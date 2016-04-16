@@ -1,6 +1,7 @@
 package io.taweesoft.wonglhao.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.models.Bar;
+import io.taweesoft.wonglhao.ui.views.BarActivity;
 
 /**
  * Created by TAWEESOFT on 4/15/16 AD.
@@ -46,8 +48,16 @@ public class BarAdapter extends RecyclerView.Adapter<BarAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         this.context = parent.getContext();
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.bar_item_layout , null);
-        ViewHolder holder = new ViewHolder(v);
-
+        final ViewHolder holder = new ViewHolder(v);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bar bar = barList.get(holder.getPosition());
+                Intent intent = new Intent(context , BarActivity.class);
+                intent.putExtra("bar" , bar);
+                context.startActivity(intent);
+            }
+        });
         return holder;
     }
 

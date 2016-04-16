@@ -1,6 +1,7 @@
 package io.taweesoft.wonglhao.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.models.Bar;
+import io.taweesoft.wonglhao.ui.views.BarActivity;
 
 /**
  * Created by TAWEESOFT on 4/16/16 AD.
@@ -46,7 +48,10 @@ public class SearchBarAdapter extends RecyclerView.Adapter<SearchBarAdapter.View
             @Override
             public void onClick(View v) {
                 int position = viewHolder.getPosition();
-                // TODO: 4/16/16 AD Open bar activity.
+                Bar bar = barList.get(position);
+                Intent intent = new Intent(context, BarActivity.class);
+                intent.putExtra("bar" , bar);
+                context.startActivity(intent);
             }
         });
         return viewHolder;

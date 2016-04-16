@@ -2,10 +2,12 @@ package io.taweesoft.wonglhao.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by TAWEESOFT on 4/14/16 AD.
  */
-public class Promotion {
+public class Promotion implements Serializable{
     @SerializedName("_id") private String id;
     @SerializedName("name") private String name;
     @SerializedName("bar_id") private String barId;

@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
+import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.managers.MyObservable;
 import io.taweesoft.wonglhao.managers.Utility;
@@ -89,6 +90,8 @@ public class SearchFragment extends Fragment implements MyObservable{
             public void onResponse(Call<Element> call, Response<Element> response) {
                 if(response.isSuccessful()){
                     List<Bar> barList = response.body().getBarList();
+                    for(Bar bar : barList)
+                        DataStorage.barMap.put(bar.getId() , bar);
                     SearchBarAdapter adapter = new SearchBarAdapter(barList);
                     rv.setAdapter(adapter);
                 }else{
