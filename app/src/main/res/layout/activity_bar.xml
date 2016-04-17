@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:fillViewport="false">
         <LinearLayout
+            android:paddingBottom="@dimen/itemMargin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -125,6 +126,13 @@
                     android:id="@+id/textView4"
                     android:layout_marginTop="@dimen/itemMargin"
                     android:textColor="@color/colorPrimary" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="@dimen/itemMarginSmall"
+                    android:name="io.taweesoft.wonglhao.ui.fragments.MapFragment"/>
 
             </LinearLayout>
 
