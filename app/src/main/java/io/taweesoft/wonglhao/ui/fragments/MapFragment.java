@@ -83,17 +83,18 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
                 .FusedLocationApi
                 .getLastLocation( mGoogleApiClient );
 
-        initCamera(mCurrentLocation);
+//        initCamera(mCurrentLocation);
     }
-    private void initCamera( Location location ) {
+
+    public void initCamera( LatLng latLng , String name) {
+        onMapClick(latLng , name);
         CameraPosition position = CameraPosition.builder()
-                .target( new LatLng( location.getLatitude(),
-                        location.getLongitude() ) )
+                .target( new LatLng( latLng.latitude,
+                        latLng.longitude ) )
                 .zoom( 16f )
                 .bearing( 0.0f )
                 .tilt( 0.0f )
                 .build();
-
         getMap().animateCamera( CameraUpdateFactory
                 .newCameraPosition(position), null );
 

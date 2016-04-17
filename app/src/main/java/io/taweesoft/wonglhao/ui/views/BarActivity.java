@@ -10,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,7 @@ import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Element;
+import io.taweesoft.wonglhao.ui.fragments.MapFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +37,7 @@ public class BarActivity extends AppCompatActivity {
     @Bind(R.id.tvDescription) TextView tvDescription;
     @Bind(R.id.ratingBar) RatingBar ratingBar;
     @Bind(R.id.tvRate) TextView tvRate;
+    private MapFragment map;
 
     private Bar bar;
 
@@ -43,6 +46,8 @@ public class BarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar);
         ButterKnife.bind(this);
+        map = (MapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+        Log.e("BBBB" , map+"");
         bar = ((Bar)getIntent().getSerializableExtra("bar"));
         checkBar();
     }
@@ -53,6 +58,7 @@ public class BarActivity extends AppCompatActivity {
         tvDescription.setText(bar.getDescription());
         ratingBar.setRating((float)bar.getStar());
         tvRate.setText(String.format("(%d)" , bar.getRate()));
+        map.initCamera(new LatLng(bar.getLat() , bar.getLon()) , bar.getName());
         // TODO: 4/16/16 AD Show placeholder in imgBar
         Glide
                 .with(this)
