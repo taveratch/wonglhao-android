@@ -56,6 +56,8 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionAdapter.View
                 Bar bar = DataStorage.barMap.get(promotion.getBarId());
                 Intent intent = new Intent(context , BarActivity.class);
                 intent.putExtra("bar" , bar);
+                if(bar == null)
+                    intent.putExtra("bar_id" , promotion.getBarId());
                 context.startActivity(intent);
             }
         });
