@@ -31,4 +31,6 @@ public interface APIService {
     @POST("searchBar")
     Call<Element> searchBar(@Body RequestBody requestBody);
 
+    @POST("getBar")
+    Call<Element> getBar(@Body RequestBody requestBody);
 }
