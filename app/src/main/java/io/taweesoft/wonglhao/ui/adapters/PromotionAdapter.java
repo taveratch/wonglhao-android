@@ -1,6 +1,7 @@
 package io.taweesoft.wonglhao.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,10 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.taweesoft.wonglhao.R;
+import io.taweesoft.wonglhao.managers.DataStorage;
+import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Promotion;
+import io.taweesoft.wonglhao.ui.views.BarActivity;
 
 /**
  * Created by TAWEESOFT on 4/14/16 AD.
@@ -44,7 +48,16 @@ public class PromotionAdapter extends RecyclerView.Adapter<PromotionAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         this.context = parent.getContext();
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.promotion_item_layout,null);
-        ViewHolder holder = new ViewHolder(v);
+        final ViewHolder holder = new ViewHolder(v);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Promotion promotion = promotionList.get(holder.getPosition());
+                Bar bar = DataStorage.barMap.get(promotion.getBarId());
+                Intent intent = new Intent(context , BarActivity.class);
+                context.startActivity(intent);
+            }
+        });
         return holder;
     }
 
