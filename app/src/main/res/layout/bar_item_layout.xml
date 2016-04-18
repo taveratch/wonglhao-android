@@ -46,7 +46,8 @@
                         style="@style/labelHeader"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:textColor="#FFF" />
+                        android:textColor="#FFF"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:orientation="horizontal"
