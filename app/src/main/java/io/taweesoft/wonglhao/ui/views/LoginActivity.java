@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements Observer {
         map.put("password" , password);
         Load load = Load.newInstance();
         load.addObserver(this);
-        load.signIn(this,map);
+        load.signIn(map);
 
     }
 
@@ -72,10 +72,22 @@ public class LoginActivity extends AppCompatActivity implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         if (o == null);
-        User user = (User)o;
-        Intent intent = new Intent(this, MainActivity.class);
-        DataStorage.user = user;
-        startActivity(intent);
-        dialog.dismiss();
+        Response<User> response = (Response<User>) o;
+        if(response.isSuccessful()){
+            // TODO: 4/13/16 AD  Save into SharedPreference
+            User user = response.body();
+            Intent intent = new Intent(this, MainActivity.class);
+            DataStorage.user = user;
+            startActivity(intent);
+            dialog.dismiss();
+        }else{
+            try {
+                Utility.showToastDialog(this,response.errorBody().string(), false).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.e("errors" , response.raw().toString());
+        }
+
     }
 }

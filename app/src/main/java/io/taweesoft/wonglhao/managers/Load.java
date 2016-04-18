@@ -24,30 +24,38 @@ public class Load extends Observable{
         return new Load();
     }
 
-    public void signIn(final Context context , Map<String , String> map) {
+    public void signIn(Map<String , String> map) {
         APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
         Call<User> checkLogin = apiService.signin(HttpManager.getInstance().createRequestBody(map));
         checkLogin.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()){
-                    // TODO: 4/13/16 AD  Save into SharedPreference
-                    setChanged();
-                    notifyObservers(response.body());
-                }else{
-                    try {
-                        Utility.showToastDialog(context,response.errorBody().string(), false).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Log.e("errors" , response.raw().toString());
-                }
+                setChanged();
+                notifyObservers(response);
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                //Login failed
-                Utility.showToastDialog(context, "Error" , false).show();
+                //No connection
+                Log.e("onFailed" , t.getMessage());
+            }
+        });
+    }
+
+    public void signUp( User user) {
+        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
+        Call<User> signupCall = apiService.signup(user);
+        signupCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                setChanged();
+                notifyObservers(response);
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                //No connection
+                Log.e("onFailed" , t.getMessage());
             }
         });
     }
