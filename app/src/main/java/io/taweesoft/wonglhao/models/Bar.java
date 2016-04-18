@@ -18,7 +18,7 @@ public class Bar implements Serializable{
     @SerializedName("description") private String description;
     @SerializedName("banner_image_url") private String bannerUrl;
     @SerializedName("image_url") private String imageUrl;
-    @SerializedName("checked_in") private List<String> checked_in;
+    @SerializedName("checked_in") private List<Recent> checked_in;
     @SerializedName("promotions") private List<Promotion> promotionList;
     @SerializedName("review") private List<Review> reviewList;
     @SerializedName("type") private String type;
@@ -95,11 +95,11 @@ public class Bar implements Serializable{
         this.imageUrl = imageUrl;
     }
 
-    public List<String> getChecked_in() {
+    public List<Recent> getChecked_in() {
         return checked_in;
     }
 
-    public void setChecked_in(List<String> checked_in) {
+    public void setChecked_in(List<Recent> checked_in) {
         this.checked_in = checked_in;
     }
 
