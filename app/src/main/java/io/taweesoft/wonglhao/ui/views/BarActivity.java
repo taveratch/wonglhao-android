@@ -14,6 +14,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,6 +24,7 @@ import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
+import io.taweesoft.wonglhao.managers.Load;
 import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Element;
 import io.taweesoft.wonglhao.ui.fragments.MapFragment;
@@ -29,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BarActivity extends AppCompatActivity {
+public class BarActivity extends AppCompatActivity implements Observer {
 
     @Bind(R.id.imgBar) ImageView imgBar;
     @Bind(R.id.tvBarName) TextView tvBarName;
@@ -38,7 +41,7 @@ public class BarActivity extends AppCompatActivity {
     @Bind(R.id.ratingBar) RatingBar ratingBar;
     @Bind(R.id.tvRate) TextView tvRate;
     private MapFragment map;
-
+    private ProgressDialog dialog;
     private Bar bar;
 
     @Override
@@ -47,7 +50,6 @@ public class BarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bar);
         ButterKnife.bind(this);
         map = (MapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
-        Log.e("BBBB" , map+"");
         bar = ((Bar)getIntent().getSerializableExtra("bar"));
         checkBar();
     }
@@ -75,36 +77,31 @@ public class BarActivity extends AppCompatActivity {
 
     public void checkBar(){
         if(bar == null){ //Load bar from server
-            final ProgressDialog dialog = ProgressDialog.show(this ,null , getString(R.string.pleaseWait));
+            dialog = ProgressDialog.show(this ,null , getString(R.string.pleaseWait));
             dialog.setCancelable(false);
             String barId = getIntent().getStringExtra("bar_id");
-            APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
             Map<String, String> map = new HashMap<>();
             map.put("bar_id" , barId);
-            Call<Element> getBarCall = apiService.getBar(HttpManager.getInstance().createRequestBody(map));
-            getBarCall.enqueue(new Callback<Element>() {
-                @Override
-                public void onResponse(Call<Element> call, Response<Element> response) {
-                    if(response.isSuccessful()){
-                        bar = response.body().getBarList().get(0);
-                        DataStorage.barMap.put(bar.getId() , bar);
-                        initComponents();
-                    }else {
-                        // TODO: 4/17/16 AD Handle error
-                        Log.e("error" , response.raw().toString() );
-                    }
-                    dialog.dismiss();
-                }
-
-                @Override
-                public void onFailure(Call<Element> call, Throwable t) {
-
-                }
-            });
+            Load load = Load.newInstance();
+            load.addObserver(this);
+            load.getBar(map);
         }else{
             initComponents();
         }
     }
 
-
+    @Override
+    public void update(Observable observable, Object o) {
+        if(o == null) return;
+        Response<Element> response = (Response<Element>)o;
+        if(response.isSuccessful()){
+            bar = response.body().getBarList().get(0);
+            DataStorage.barMap.put(bar.getId() , bar);
+            initComponents();
+        }else {
+            // TODO: 4/17/16 AD Handle error
+            Log.e("error" , response.raw().toString() );
+        }
+        dialog.dismiss();
+    }
 }

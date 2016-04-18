@@ -26,6 +26,7 @@ import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
+import io.taweesoft.wonglhao.managers.Load;
 import io.taweesoft.wonglhao.managers.MyObservable;
 import io.taweesoft.wonglhao.managers.Utility;
 import io.taweesoft.wonglhao.models.Bar;
@@ -40,7 +41,7 @@ import retrofit2.Response;
 /**
  * Created by TAWEESOFT on 4/14/16 AD.
  */
-public class SearchFragment extends Fragment implements MyObservable{
+public class SearchFragment extends Fragment implements MyObservable,Observer{
 
     private Observable observable = new Observable();
 
@@ -80,31 +81,26 @@ public class SearchFragment extends Fragment implements MyObservable{
     public void search() {
         String word = etName.getText().toString();
         if(word.length() == 0 ) return;
-        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
         Map<String, String> map = new HashMap<>();
         map.put("text" , word);
-        RequestBody requestBody = HttpManager.getInstance().createRequestBody(map);
-        Call<Element> searchBarCall = apiService.searchBar(requestBody);
-        searchBarCall.enqueue(new Callback<Element>() {
-            @Override
-            public void onResponse(Call<Element> call, Response<Element> response) {
-                if(response.isSuccessful()){
-                    List<Bar> barList = response.body().getBarList();
-                    for(Bar bar : barList)
-                        DataStorage.barMap.put(bar.getId() , bar);
-                    SearchBarAdapter adapter = new SearchBarAdapter(barList);
-                    rv.setAdapter(adapter);
-                }else{
-                    // TODO: 4/16/16 AD Handle error
-                    Log.e("error" , response.raw().toString());
-                }
-            }
+        Load load = Load.newInstance();
+        load.addObserver(this);
+        load.searchBar(map);
+    }
 
-            @Override
-            public void onFailure(Call<Element> call, Throwable t) {
-                // TODO: 4/16/16 AD Handle error
-                Log.e("failed" , t.getMessage());
-            }
-        });
+    @Override
+    public void update(java.util.Observable observable, Object o) {
+        if(o == null) return;
+        Response<Element> response = (Response<Element>)o;
+        if(response.isSuccessful()){
+            List<Bar> barList = response.body().getBarList();
+            for(Bar bar : barList)
+                DataStorage.barMap.put(bar.getId() , bar);
+            SearchBarAdapter adapter = new SearchBarAdapter(barList);
+            rv.setAdapter(adapter);
+        }else{
+            // TODO: 4/16/16 AD Handle error
+            Log.e("error" , response.raw().toString());
+        }
     }
 }
