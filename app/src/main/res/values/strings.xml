@@ -24,4 +24,5 @@
     <string name="GoogleAPIKey">AIzaSyAu9xPEOPwQ65pBDM72MQUEOwz9PggZZ3s</string>
     <string name="checkIn">Check In</string>
     <string name="whoHere">Who\'s here</string>
+    <string name="checkInDialog">Do you want to check in @</string>
 </resources>

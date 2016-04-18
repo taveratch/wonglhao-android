@@ -1,15 +1,22 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
@@ -40,6 +47,11 @@ public class BarActivity extends AppCompatActivity implements Observer {
     @Bind(R.id.tvDescription) TextView tvDescription;
     @Bind(R.id.ratingBar) RatingBar ratingBar;
     @Bind(R.id.tvRate) TextView tvRate;
+    @Bind(R.id.fabMenu) FloatingActionMenu fabMenu;
+    @Bind(R.id.fabCheckIn) FloatingActionButton fabCheckIn;
+    @Bind(R.id.fabReview) FloatingActionButton fabReview;
+    @Bind(R.id.fabWhoHere) FloatingActionButton fabWhoHere;
+
     private MapFragment map;
     private ProgressDialog dialog;
     private Bar bar;
@@ -68,6 +80,28 @@ public class BarActivity extends AppCompatActivity implements Observer {
                 .centerCrop()
                 .crossFade()
                 .into(imgBar);
+        fabCheckIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BarActivity.this);
+                builder.setMessage(BarActivity.this.getString(R.string.checkInDialog) + bar.getName());
+                builder.setPositiveButton("Check in", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Map<String, String> map = new HashMap<String, String>();
+                        map.put("username",DataStorage.user.getUsername());
+                        map.put("bar_id" , bar.getId());
+                        map.put("gender" , DataStorage.user.getGender());
+                        map.put("user_id" , DataStorage.user.getId());
+                        Load load = Load.newInstance();
+                        load.checkIn(map);
+                        Toast.makeText(BarActivity.this , "Checked in" , Toast.LENGTH_SHORT).show();
+                        fabMenu.toggle(true);
+                    }
+                });
+                builder.create().show();
+            }
+        });
     }
 
     @OnClick(R.id.btnBack)

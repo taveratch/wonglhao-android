@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements Observer {
     @Bind(R.id.etPassword) EditText etPassword;
 
     private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
