@@ -33,4 +33,8 @@ public interface APIService {
 
     @POST("getBar")
     Call<Element> getBar(@Body RequestBody requestBody);
+
+    @POST("checkin")
+    Call<Element> checkin(@Body RequestBody requestBody);
+
 }

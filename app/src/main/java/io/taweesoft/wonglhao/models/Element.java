@@ -10,6 +10,7 @@ import java.util.List;
 public class Element {
     @SerializedName("promotions") List<Promotion> promotionList;
     @SerializedName("bars") List<Bar> barList;
+    @SerializedName("checked_in") List<Recent> recentList;
     public List<Promotion> getPromotionList() {
         return promotionList;
     }
@@ -24,5 +25,13 @@ public class Element {
 
     public void setBarList(List<Bar> barList) {
         this.barList = barList;
+    }
+
+    public List<Recent> getRecentList() {
+        return recentList;
+    }
+
+    public void setRecentList(List<Recent> recentList) {
+        this.recentList = recentList;
     }
 }
