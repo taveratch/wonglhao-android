@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
 import io.taweesoft.wonglhao.managers.HttpManager;
+import io.taweesoft.wonglhao.managers.Load;
 import io.taweesoft.wonglhao.managers.MyObservable;
 import io.taweesoft.wonglhao.models.Element;
 import io.taweesoft.wonglhao.models.Observable;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 /**
  * Created by TAWEESOFT on 4/14/16 AD.
  */
-public class PromotionFragment extends Fragment implements MyObservable {
+public class PromotionFragment extends Fragment implements MyObservable,Observer {
 
     private Observable observable = new Observable();
 
@@ -45,34 +46,9 @@ public class PromotionFragment extends Fragment implements MyObservable {
         View v = inflater.inflate(R.layout.promotion_fragment_layout,container, false);
         ButterKnife.bind(this,v);
         initComponents();
-
-        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
-        Call<Element> promotionsCall = apiService.getAllPromotions(-1);
-        promotionsCall.enqueue(new Callback<Element>() {
-            @Override
-            public void onResponse(Call<Element> call, Response<Element> response) {
-                if(response.isSuccessful()){
-                    List<Promotion> promotionList = response.body().getPromotionList();
-                    PromotionAdapter adapter = new PromotionAdapter(promotionList);
-                    RecyclerView.LayoutManager llm = new LinearLayoutManager(PromotionFragment.this.getContext());
-                    rv.setLayoutManager(llm);
-                    rv.setAdapter(adapter);
-                }else{
-                    // TODO: 4/14/16 AD Handle error
-                    try {
-                        Log.e("error" , response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<Element> call, Throwable t) {
-
-            }
-        });
+        Load load = Load.newInstance();
+        load.addObserver(this);
+        load.getAllPromotion();
         return v;
     }
 
@@ -91,5 +67,25 @@ public class PromotionFragment extends Fragment implements MyObservable {
     @Override
     public void addObserver(Observer observer) {
         observable.addObserver(observer);
+    }
+
+    @Override
+    public void update(java.util.Observable observable, Object o) {
+        if(o == null) return;
+        Response<Element> response = (Response<Element>)o;
+        if(response.isSuccessful()){
+            List<Promotion> promotionList = response.body().getPromotionList();
+            PromotionAdapter adapter = new PromotionAdapter(promotionList);
+            RecyclerView.LayoutManager llm = new LinearLayoutManager(PromotionFragment.this.getContext());
+            rv.setLayoutManager(llm);
+            rv.setAdapter(adapter);
+        }else{
+            // TODO: 4/14/16 AD Handle error
+            try {
+                Log.e("error" , response.errorBody().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

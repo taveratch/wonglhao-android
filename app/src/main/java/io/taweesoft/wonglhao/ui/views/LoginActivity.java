@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity implements Observer {
         Load load = Load.newInstance();
         load.addObserver(this);
         load.signIn(map);
-
     }
 
     @OnClick(R.id.btnSignup)

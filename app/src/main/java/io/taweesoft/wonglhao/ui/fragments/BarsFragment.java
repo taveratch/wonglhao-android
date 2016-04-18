@@ -20,6 +20,7 @@ import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
+import io.taweesoft.wonglhao.managers.Load;
 import io.taweesoft.wonglhao.managers.MyObservable;
 import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Element;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 /**
  * Created by TAWEESOFT on 4/14/16 AD.
  */
-public class BarsFragment extends Fragment implements MyObservable {
+public class BarsFragment extends Fragment implements MyObservable , Observer {
 
     private Observable observable = new Observable();
 
@@ -45,34 +46,10 @@ public class BarsFragment extends Fragment implements MyObservable {
         View v = inflater.inflate(R.layout.pub_fragment_layout,container, false);
         ButterKnife.bind(this,v);
         initComponents();
-        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
-        Call<Element> getAllBarCall = apiService.getAllBar(-1);
-        getAllBarCall.enqueue(new Callback<Element>() {
-            @Override
-            public void onResponse(Call<Element> call, Response<Element> response) {
-                if(response.isSuccessful()){
-                    List<Bar> barList = response.body().getBarList();
+        Load load = Load.newInstance();
+        load.addObserver(this);
+        load.getAllBar();
 
-                    //Save all bars to barMap for using in another activity.
-                    DataStorage.barMap.clear();
-                    for(Bar bar : barList)
-                        DataStorage.barMap.put(bar.getId() , bar);
-
-                    RecyclerView.LayoutManager llm = new LinearLayoutManager(BarsFragment.this.getContext());
-                    rv.setLayoutManager(llm);
-                    BarAdapter adapter = new BarAdapter(barList);
-                    rv.setAdapter(adapter);
-                }else{
-                    // TODO: 4/15/16 AD Handle error
-                    Log.e("failed" , response.raw().toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Element> call, Throwable t) {
-                Log.e("error" , t.getMessage());
-            }
-        });
         return v;
     }
 
@@ -91,5 +68,26 @@ public class BarsFragment extends Fragment implements MyObservable {
     @Override
     public void addObserver(Observer observer) {
         observable.addObserver(observer);
+    }
+
+    @Override
+    public void update(java.util.Observable observable, Object o) {
+        if(o == null) return;
+        Response<Element> response = (Response<Element>)o;
+        if(response.isSuccessful()){
+            List<Bar> barList = response.body().getBarList();
+            //Save all bars to barMap for using in another activity.
+            DataStorage.barMap.clear();
+            for(Bar bar : barList)
+                DataStorage.barMap.put(bar.getId() , bar);
+
+            RecyclerView.LayoutManager llm = new LinearLayoutManager(BarsFragment.this.getContext());
+            rv.setLayoutManager(llm);
+            BarAdapter adapter = new BarAdapter(barList);
+            rv.setAdapter(adapter);
+        }else{
+            // TODO: 4/15/16 AD Handle error
+            Log.e("failed" , response.raw().toString());
+        }
     }
 }
