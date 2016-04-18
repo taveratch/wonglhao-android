@@ -22,4 +22,6 @@
     <string name="description">Description</string>
     <string name="map">Map</string>
     <string name="GoogleAPIKey">AIzaSyAu9xPEOPwQ65pBDM72MQUEOwz9PggZZ3s</string>
+    <string name="checkIn">Check In</string>
+    <string name="whoHere">Who\'s here</string>
 </resources>
