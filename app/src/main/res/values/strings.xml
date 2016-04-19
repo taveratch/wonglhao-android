@@ -28,4 +28,6 @@
     <string name="male">male</string>
     <string name="female">female</string>
     <string name="signout">Sign out</string>
+    <string name="star">Star</string>
+    <string name="review">Review</string>
 </resources>
