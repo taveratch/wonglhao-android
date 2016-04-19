@@ -13,6 +13,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Review;
@@ -47,5 +48,10 @@ public class ReviewActivity extends AppCompatActivity {
                 .centerCrop()
                 .crossFade()
                 .into(imgBar);
+    }
+
+    @OnClick(R.id.btnBack)
+    public void back() {
+        finish();
     }
 }
