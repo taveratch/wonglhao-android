@@ -1,10 +1,12 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,7 +19,9 @@ import java.util.Observer;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
+import io.taweesoft.wonglhao.managers.Constant;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.models.SideBarItem;
 import io.taweesoft.wonglhao.ui.adapters.SideBarAdapter;
@@ -39,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements Observer{
     @Bind(R.id.lv) ListView sideBar;
     @Bind(R.id.tvName) TextView tvName;
     @Bind(R.id.tvEmail) TextView tvEmail;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,5 +120,13 @@ public class MainActivity extends AppCompatActivity implements Observer{
     @Override
     public void update(Observable observable, Object data) {
         menuDrawer.toggleMenu(true);
+    }
+
+    @OnClick(R.id.containerSignout)
+    public void signout() {
+        SharedPreferences.Editor editor = getSharedPreferences(Constant.APP_NAME , MODE_PRIVATE).edit();
+        editor.clear();
+        editor.apply();
+        finish();
     }
 }

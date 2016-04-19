@@ -6,5 +6,5 @@ package io.taweesoft.wonglhao.managers;
 public class Constant {
     public static String URL = "http://taweesoft.xyz:5555/wonglhao/";
     public static String APP_NAME = "wonglhao";
-    public static String USERNAME = "username";
+    public static String USER = "user_info";
 }

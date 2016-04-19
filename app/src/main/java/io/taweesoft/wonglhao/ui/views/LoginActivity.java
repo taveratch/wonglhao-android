@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -80,7 +82,8 @@ public class LoginActivity extends AppCompatActivity implements Observer {
             User user = response.body();
 
             SharedPreferences.Editor editor = getSharedPreferences(Constant.APP_NAME, MODE_PRIVATE).edit();
-            editor.putString(Constant.USERNAME, user.getUsername());
+            Gson gson = new Gson();
+            editor.putString(Constant.USER, gson.toJson(user));
             editor.apply();
 
             Intent intent = new Intent(this, MainActivity.class);
