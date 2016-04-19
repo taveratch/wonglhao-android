@@ -37,6 +37,7 @@ public class SplashScreen extends AppCompatActivity {
                     DataStorage.user = gson.fromJson(user , User.class);
                     navigateToMain();
                 }
+                finish();
             }
         },2000);
 
