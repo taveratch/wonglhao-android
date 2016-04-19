@@ -34,7 +34,8 @@
         <activity android:name=".ui.views.SignupActivity" />
         <activity android:name=".ui.views.BarActivity" />
         <activity android:name=".ui.views.WhoHereActivity" />
-        <activity android:name=".ui.views.LoginActivity"></activity>
+        <activity android:name=".ui.views.LoginActivity" />
+        <activity android:name=".ui.views.ReviewActivity"></activity>
     </application>
 
 </manifest>

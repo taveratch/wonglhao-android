@@ -76,10 +76,7 @@
                         android:numStars="5"
                         android:rating="0"
                         android:stepSize="0.5"
-                        android:id="@+id/ratingBar"
-                        android:contextClickable="false"
-                        android:focusable="false"
-                        android:clickable="false" />
+                        android:id="@+id/ratingBar"/>
 
                     <TextView
                         android:layout_width="wrap_content"
