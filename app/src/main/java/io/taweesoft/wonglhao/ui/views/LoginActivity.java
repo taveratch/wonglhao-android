@@ -3,6 +3,7 @@ package io.taweesoft.wonglhao.ui.views;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.APIService;
+import io.taweesoft.wonglhao.managers.Constant;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.managers.HttpManager;
 import io.taweesoft.wonglhao.managers.Load;
@@ -76,6 +78,11 @@ public class LoginActivity extends AppCompatActivity implements Observer {
         if(response.isSuccessful()){
             // TODO: 4/13/16 AD  Save into SharedPreference
             User user = response.body();
+
+            SharedPreferences.Editor editor = getSharedPreferences(Constant.APP_NAME, MODE_PRIVATE).edit();
+            editor.putString(Constant.USERNAME, user.getUsername());
+            editor.apply();
+
             Intent intent = new Intent(this, MainActivity.class);
             DataStorage.user = user;
             startActivity(intent);
