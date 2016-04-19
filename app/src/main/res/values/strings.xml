@@ -25,4 +25,6 @@
     <string name="checkIn">Check In</string>
     <string name="whoHere">Who\'s here</string>
     <string name="checkInDialog">Do you want to check in @</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
 </resources>
