@@ -20,7 +20,9 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -111,6 +113,14 @@ public class BarActivity extends AppCompatActivity implements Observer {
                 startActivity(intent);
             }
         });
+        fabReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BarActivity.this , ReviewActivity.class);
+                intent.putExtra("bar" , bar);
+                startActivity(intent);
+            }
+        });
     }
 
     @OnClick(R.id.btnBack)
@@ -147,4 +157,5 @@ public class BarActivity extends AppCompatActivity implements Observer {
         }
         dialog.dismiss();
     }
+
 }

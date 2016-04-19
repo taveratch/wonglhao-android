@@ -12,6 +12,7 @@ public class Review implements Serializable{
     @SerializedName("review") private String text;
     @SerializedName("username") private String username;
     @SerializedName("date") private Date date;
+    @SerializedName("star") private double star;
 
     public String getText() {
         return text;
@@ -35,5 +36,13 @@ public class Review implements Serializable{
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public double getStar() {
+        return star;
+    }
+
+    public void setStar(double star) {
+        this.star = star;
     }
 }

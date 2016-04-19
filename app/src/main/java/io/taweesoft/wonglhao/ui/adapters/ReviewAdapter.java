@@ -58,6 +58,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         holder.tvReview.setText(review.getText());
         holder.tvUsername.setText(review.getUsername());
         holder.tvDate.setText(format.format(review.getDate()));
+        holder.ratingBar.setRating((float)review.getStar());
     }
 
     @Override
