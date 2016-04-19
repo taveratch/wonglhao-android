@@ -1,6 +1,7 @@
 package io.taweesoft.wonglhao.managers;
 
 import io.taweesoft.wonglhao.models.Element;
+import io.taweesoft.wonglhao.models.Review;
 import io.taweesoft.wonglhao.models.User;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -39,4 +40,7 @@ public interface APIService {
 
     @POST("getCheckedin")
     Call<Element> getCheckedIn(@Body RequestBody requestBody);
+
+    @POST("reviewPub")
+    Call<Review> reviewBar(@Body RequestBody requestBody);
 }
