@@ -53,7 +53,8 @@ public class WhoHereAdapter extends RecyclerView.Adapter<WhoHereAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Recent recent = recentList.get(position);
-        DateFormat format = new SimpleDateFormat("dd MMM yyyy" , Locale.getDefault());
+        DateFormat format = new SimpleDateFormat("dd MMM yyyy HH:mm" , Locale.getDefault());
+        holder.tvUsername.setText(recent.getUsername());
         holder.tvTime.setText(format.format(recent.getTime()));
         if(recent.getGender().equals(context.getString(R.string.male)))
             holder.imgGender.setImageResource(R.drawable.man);
@@ -63,6 +64,6 @@ public class WhoHereAdapter extends RecyclerView.Adapter<WhoHereAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return recentList.size();
     }
 }
