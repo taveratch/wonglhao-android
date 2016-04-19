@@ -37,4 +37,6 @@ public interface APIService {
     @POST("checkin")
     Call<Element> checkin(@Body RequestBody requestBody);
 
+    @POST("getCheckedin")
+    Call<Element> getCheckedIn(@Body RequestBody requestBody);
 }
