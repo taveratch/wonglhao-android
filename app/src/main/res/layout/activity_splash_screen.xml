@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="io.taweesoft.wonglhao.ui.views.SplashScreen"
+    android:background="@color/colorPrimaryDark">
+
+    <com.liulishuo.magicprogresswidget.MagicProgressCircle
+        android:id="@+id/circularProgressBar"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:mpc_percent="0.0"
+        app:mpc_start_color="@color/colorMaterialGreenAlternative"
+        app:mpc_end_color="@color/colorMaterialGreenAlternative"
+        app:mpc_stroke_width="30dp"
+        app:mpc_default_color="@color/colorPrimaryDark"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:id="@+id/imageView8"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
+
+</RelativeLayout>
