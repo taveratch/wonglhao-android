@@ -3,6 +3,7 @@ package io.taweesoft.wonglhao.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by TAWEESOFT on 4/15/16 AD.
@@ -10,6 +11,8 @@ import java.io.Serializable;
 public class Review implements Serializable{
     @SerializedName("review") private String text;
     @SerializedName("username") private String username;
+    @SerializedName("date") private Date date;
+    @SerializedName("star") private double star;
 
     public String getText() {
         return text;
@@ -25,5 +28,21 @@ public class Review implements Serializable{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public double getStar() {
+        return star;
+    }
+
+    public void setStar(double star) {
+        this.star = star;
     }
 }

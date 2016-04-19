@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/containerMargin"
+        android:layout_marginRight="@dimen/containerMargin"
+        android:layout_marginTop="@dimen/itemMargin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/tvReview"
+            android:textColor="@color/colorAccent" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/itemMargin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/tvUsername"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/tvDate"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="@dimen/itemMargin" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:isIndicator="true"
+                android:progressTint="@color/sunFlower"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5"
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:background="@color/colorPrimary"
+            android:alpha="0.1"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/itemMargin" />
+    </LinearLayout>
+
+</RelativeLayout>
