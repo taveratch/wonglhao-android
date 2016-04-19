@@ -162,4 +162,23 @@ public class Load extends Observable{
             }
         });
     }
+
+    public void getCheckedIn(Map<String, String> map) {
+        RequestBody requestBody = HttpManager.getInstance().createRequestBody(map);
+        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
+        Call<Element> getCheckedInCall = apiService.getCheckedIn(requestBody);
+        getCheckedInCall.enqueue(new Callback<Element>() {
+            @Override
+            public void onResponse(Call<Element> call, Response<Element> response) {
+                setChanged();
+                notifyObservers(response);
+            }
+
+            @Override
+            public void onFailure(Call<Element> call, Throwable t) {
+                //No Connection
+                Log.e("onFailed" , t.getMessage());
+            }
+        });
+    }
 }

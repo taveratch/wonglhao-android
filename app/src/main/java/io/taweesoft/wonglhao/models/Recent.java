@@ -3,6 +3,7 @@ package io.taweesoft.wonglhao.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by TAWEESOFT on 4/18/16 AD.
@@ -13,7 +14,7 @@ public class Recent implements Serializable{
     @SerializedName("gender") private String gender;
     @SerializedName("user_id") private String userId;
     @SerializedName("bar_id") private String barId;
-    @SerializedName("time") private String time;
+    @SerializedName("time") private Date time;
 
     public String getId() {
         return id;
@@ -55,11 +56,11 @@ public class Recent implements Serializable{
         this.barId = barId;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 }
