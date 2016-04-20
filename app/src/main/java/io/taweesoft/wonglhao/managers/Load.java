@@ -201,4 +201,23 @@ public class Load extends Observable{
             }
         });
     }
+
+    public void getNearBy(Map<String,String> map) {
+        RequestBody requestBody = HttpManager.getInstance().createRequestBody(map);
+        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
+        Call<Element> getNearByCall = apiService.getNearBy(requestBody);
+        getNearByCall.enqueue(new Callback<Element>() {
+            @Override
+            public void onResponse(Call<Element> call, Response<Element> response) {
+                setChanged();
+                notifyObservers(response);
+            }
+
+            @Override
+            public void onFailure(Call<Element> call, Throwable t) {
+                //No connection
+                Log.e("onFailed" , t.getMessage());
+            }
+        });
+    }
 }

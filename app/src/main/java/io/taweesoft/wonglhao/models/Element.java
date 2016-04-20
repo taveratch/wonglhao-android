@@ -11,6 +11,7 @@ public class Element {
     @SerializedName("promotions") List<Promotion> promotionList;
     @SerializedName("bars") List<Bar> barList;
     @SerializedName("checked_in") List<Recent> recentList;
+    @SerializedName("nearby") List<Nearby> nearbyList;
     public List<Promotion> getPromotionList() {
         return promotionList;
     }
@@ -33,5 +34,13 @@ public class Element {
 
     public void setRecentList(List<Recent> recentList) {
         this.recentList = recentList;
+    }
+
+    public List<Nearby> getNearbyList() {
+        return nearbyList;
+    }
+
+    public void setNearbyList(List<Nearby> nearbyList) {
+        this.nearbyList = nearbyList;
     }
 }

@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        Utility.canAccessLocation(this); //check access loaction permission.
     }
 
     @OnClick(R.id.btnSignin)

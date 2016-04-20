@@ -24,6 +24,7 @@ import butterknife.OnClick;
 import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.Constant;
 import io.taweesoft.wonglhao.managers.DataStorage;
+import io.taweesoft.wonglhao.managers.Utility;
 import io.taweesoft.wonglhao.models.SideBarItem;
 import io.taweesoft.wonglhao.ui.adapters.SideBarAdapter;
 import io.taweesoft.wonglhao.ui.fragments.NearByFragment;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utility.canAccessLocation(this); //check access loaction permission.
         menuDrawer = MenuDrawer.attach(this);
         menuDrawer.setContentView(R.layout.activity_main);
         menuDrawer.setMenuView(R.layout.left_drawer_layout);
