@@ -2,6 +2,7 @@ package io.taweesoft.wonglhao.ui.views;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -41,6 +42,7 @@ import io.taweesoft.wonglhao.ui.fragments.MapFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BarActivity extends AppCompatActivity implements Observer {
 
@@ -58,6 +60,11 @@ public class BarActivity extends AppCompatActivity implements Observer {
     private MapFragment map;
     private ProgressDialog dialog;
     private Bar bar;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

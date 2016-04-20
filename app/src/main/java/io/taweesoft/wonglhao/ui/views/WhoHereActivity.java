@@ -1,5 +1,6 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import io.taweesoft.wonglhao.models.Element;
 import io.taweesoft.wonglhao.models.Recent;
 import io.taweesoft.wonglhao.ui.adapters.WhoHereAdapter;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class WhoHereActivity extends AppCompatActivity implements Observer{
 
@@ -34,6 +36,11 @@ public class WhoHereActivity extends AppCompatActivity implements Observer{
     @Bind(R.id.rv) RecyclerView rv;
 
     private List<Recent> recentList;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

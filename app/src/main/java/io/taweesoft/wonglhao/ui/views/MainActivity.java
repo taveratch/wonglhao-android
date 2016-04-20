@@ -1,5 +1,6 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import io.taweesoft.wonglhao.ui.fragments.NearByFragment;
 import io.taweesoft.wonglhao.ui.fragments.PromotionFragment;
 import io.taweesoft.wonglhao.ui.fragments.BarsFragment;
 import io.taweesoft.wonglhao.ui.fragments.SearchFragment;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements Observer{
 
@@ -43,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements Observer{
     @Bind(R.id.lv) ListView sideBar;
     @Bind(R.id.tvName) TextView tvName;
     @Bind(R.id.tvEmail) TextView tvEmail;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

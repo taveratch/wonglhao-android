@@ -1,5 +1,6 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import io.taweesoft.wonglhao.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SignupActivity extends AppCompatActivity implements Observer{
 
@@ -35,6 +37,11 @@ public class SignupActivity extends AppCompatActivity implements Observer{
     @Bind(R.id.etLastname) EditText etLastname;
     @Bind(R.id.rbMale) RadioButton rbMale;
     @Bind(R.id.rbFemale) RadioButton rbFemale;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,6 +2,7 @@ package io.taweesoft.wonglhao.ui.views;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -32,6 +33,7 @@ import io.taweesoft.wonglhao.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LoginActivity extends AppCompatActivity implements Observer {
 
@@ -39,6 +41,11 @@ public class LoginActivity extends AppCompatActivity implements Observer {
     @Bind(R.id.etPassword) EditText etPassword;
 
     private ProgressDialog dialog;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
