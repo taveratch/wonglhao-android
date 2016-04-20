@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/containerMargin">
+        android:layout_margin="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,9 +22,10 @@
             android:layout_height="wrap_content"
             android:numStars="5"
             android:layout_gravity="center_horizontal"
-            android:progressBackgroundTint="@color/sunFlower"
             android:stepSize="1"
-            android:id="@+id/ratingBar" />
+            android:id="@+id/ratingBar"
+            android:progressTint="@color/sunFlower"
+            android:rating="3" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/etReview"
             android:layout_gravity="center_horizontal"
-            android:hint="Click here to review" />
+            android:hint="Click here to review"
+            android:singleLine="false" />
 
         <Button
             android:layout_width="wrap_content"
