@@ -1,5 +1,6 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -16,10 +17,17 @@ import io.taweesoft.wonglhao.R;
 import io.taweesoft.wonglhao.managers.Constant;
 import io.taweesoft.wonglhao.managers.DataStorage;
 import io.taweesoft.wonglhao.models.User;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SplashScreen extends AppCompatActivity {
 
     @Bind(R.id.circularProgressBar) MagicProgressCircle progressCircle;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

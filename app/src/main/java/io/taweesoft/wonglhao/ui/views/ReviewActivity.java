@@ -1,6 +1,7 @@
 package io.taweesoft.wonglhao.ui.views;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,7 @@ import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Review;
 import io.taweesoft.wonglhao.ui.adapters.ReviewAdapter;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ReviewActivity extends AppCompatActivity implements Observer {
 
@@ -43,6 +45,11 @@ public class ReviewActivity extends AppCompatActivity implements Observer {
     private List<Review> reviewList;
     private ReviewAdapter adapter;
     private Bar bar;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
