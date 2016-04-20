@@ -9,7 +9,7 @@
     <color name="colorMaterialGreen">#009688</color>
     <color name="colorGreen">#8BC34A</color>
     <color name="colorSecondaryDark">#455A64</color>
-    <color name="sunFlower">#FFCA28</color>
+    <color name="sunFlower">#ffca28</color>
     <color name="colorMaterialGreenAlternative">#54C7BB</color>
     <color name="colorPinkAlternative">#E86D96</color>
 </resources>

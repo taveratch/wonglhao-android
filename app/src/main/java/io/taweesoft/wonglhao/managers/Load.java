@@ -15,6 +15,7 @@ import java.util.Observable;
 import io.taweesoft.wonglhao.models.Bar;
 import io.taweesoft.wonglhao.models.Element;
 import io.taweesoft.wonglhao.models.Promotion;
+import io.taweesoft.wonglhao.models.Review;
 import io.taweesoft.wonglhao.models.User;
 import io.taweesoft.wonglhao.ui.adapters.BarAdapter;
 import io.taweesoft.wonglhao.ui.adapters.PromotionAdapter;
@@ -177,6 +178,25 @@ public class Load extends Observable{
             @Override
             public void onFailure(Call<Element> call, Throwable t) {
                 //No Connection
+                Log.e("onFailed" , t.getMessage());
+            }
+        });
+    }
+
+    public void reviewBar(Map<String, String> map) {
+        RequestBody requestBody = HttpManager.getInstance().createRequestBody(map);
+        APIService apiService = HttpManager.getInstance().getAPIService(APIService.class);
+        Call<Review> reviewCall = apiService.reviewBar(requestBody);
+        reviewCall.enqueue(new Callback<Review>() {
+            @Override
+            public void onResponse(Call<Review> call, Response<Review> response) {
+                setChanged();
+                notifyObservers(response);
+            }
+
+            @Override
+            public void onFailure(Call<Review> call, Throwable t) {
+                //No connection
                 Log.e("onFailed" , t.getMessage());
             }
         });
