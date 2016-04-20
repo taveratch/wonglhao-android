@@ -43,4 +43,7 @@ public interface APIService {
 
     @POST("reviewPub")
     Call<Review> reviewBar(@Body RequestBody requestBody);
+
+    @POST("getNearBy")
+    Call<Element> getNearBy(@Body RequestBody requestBody);
 }

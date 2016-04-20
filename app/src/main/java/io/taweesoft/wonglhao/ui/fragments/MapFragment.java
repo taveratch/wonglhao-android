@@ -35,6 +35,7 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
 
     private GoogleApiClient mGoogleApiClient;
     private Location mCurrentLocation;
+    private boolean isViewCurrentLocation = false;
 
     private final int[] MAP_TYPES = { GoogleMap.MAP_TYPE_SATELLITE,
             GoogleMap.MAP_TYPE_NORMAL,
@@ -55,6 +56,9 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
                 .build();
 
         initListeners();
+    }
+
+    public void initCurrentLocation() {
     }
 
     private void initListeners() {
@@ -82,8 +86,28 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
         mCurrentLocation = LocationServices
                 .FusedLocationApi
                 .getLastLocation( mGoogleApiClient );
+        if(isViewCurrentLocation)
+            initCameraCurrentLocation(mCurrentLocation);
+    }
 
-//        initCamera(mCurrentLocation);
+    public void setIsViewOnCurrentLocation(boolean isView) {
+        isViewCurrentLocation = isView;
+    }
+
+    public void initCameraCurrentLocation(Location location) {
+        CameraPosition position = CameraPosition.builder()
+                .target( new LatLng( mCurrentLocation.getLatitude(),
+                        mCurrentLocation.getLongitude() ) )
+                .zoom( 13f )
+                .bearing( 0.0f )
+                .tilt( 0.0f )
+                .build();
+        getMap().animateCamera( CameraUpdateFactory
+                .newCameraPosition(position), null );
+        getMap().setMapType( MAP_TYPES[curMapTypeIndex] );
+        getMap().setTrafficEnabled( true );
+        getMap().setMyLocationEnabled( true );
+        getMap().getUiSettings().setZoomControlsEnabled(true);
     }
 
     public void initCamera( LatLng latLng , String name) {
@@ -91,7 +115,7 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
         CameraPosition position = CameraPosition.builder()
                 .target( new LatLng( latLng.latitude,
                         latLng.longitude ) )
-                .zoom( 16f )
+                .zoom( 15f )
                 .bearing( 0.0f )
                 .tilt( 0.0f )
                 .build();
@@ -140,14 +164,14 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        MarkerOptions options = new MarkerOptions().position( latLng );
-        options.title( getAddressFromLatLng( latLng ) );
-//        options.title(name);
-        options.icon( BitmapDescriptorFactory.fromBitmap(
-                BitmapFactory.decodeResource(getResources(),
-                        R.mipmap.ic_launcher)) );
-
-        getMap().addMarker( options );
+//        MarkerOptions options = new MarkerOptions().position( latLng );
+//        options.title( getAddressFromLatLng( latLng ) );
+////        options.title(name);
+//        options.icon( BitmapDescriptorFactory.fromBitmap(
+//                BitmapFactory.decodeResource(getResources(),
+//                        R.mipmap.ic_launcher)) );
+//
+//        getMap().addMarker( options );
     }
 
     private String getAddressFromLatLng( LatLng latLng ) {
@@ -168,5 +192,9 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
     public boolean onMarkerClick(Marker marker) {
         marker.showInfoWindow();
         return true;
+    }
+
+    public Location getCurrentLocation() {
+        return mCurrentLocation;
     }
 }
