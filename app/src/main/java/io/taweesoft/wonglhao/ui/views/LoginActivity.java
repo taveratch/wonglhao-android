@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements Observer {
             Intent intent = new Intent(this, MainActivity.class);
             DataStorage.user = user;
             startActivity(intent);
+            finish();
             dialog.dismiss();
         }else{
             try {
