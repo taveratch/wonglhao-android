@@ -1,8 +1,11 @@
 package io.taweesoft.wonglhao.ui.views;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -132,10 +135,25 @@ public class MainActivity extends AppCompatActivity implements Observer{
     }
 
     @OnClick(R.id.containerSignout)
-    public void signout() {
-        SharedPreferences.Editor editor = getSharedPreferences(Constant.APP_NAME , MODE_PRIVATE).edit();
+    public void signOut() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sign out");
+        builder.setMessage("Sign out from this device");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                signOutAndClearSP();
+            }
+        });
+        builder.setNegativeButton("NO",null);
+        builder.create().show();
+
+    }
+
+    public void signOutAndClearSP() {SharedPreferences.Editor editor = getSharedPreferences(Constant.APP_NAME , MODE_PRIVATE).edit();
         editor.clear();
         editor.apply();
         finish();
+
     }
 }

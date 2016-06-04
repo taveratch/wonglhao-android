@@ -25,6 +25,7 @@
         android:id="@+id/imageView8"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:padding="10dp" />
 
 </RelativeLayout>
