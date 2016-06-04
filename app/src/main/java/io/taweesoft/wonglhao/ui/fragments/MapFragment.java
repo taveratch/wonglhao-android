@@ -190,6 +190,7 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        System.out.println("Marker name " + marker.getTitle());
         marker.showInfoWindow();
         return true;
     }
