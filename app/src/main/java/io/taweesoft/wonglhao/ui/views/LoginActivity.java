@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity implements Observer {
             DataStorage.user = user;
             startActivity(intent);
             finish();
-            dialog.dismiss();
         }else{
             try {
                 Utility.showToastDialog(this,response.errorBody().string(), false).show();
@@ -105,6 +104,6 @@ public class LoginActivity extends AppCompatActivity implements Observer {
             }
             Log.e("errors" , response.raw().toString());
         }
-
+        dialog.dismiss();
     }
 }

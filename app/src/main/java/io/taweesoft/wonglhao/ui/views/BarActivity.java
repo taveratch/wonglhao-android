@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +57,7 @@ public class BarActivity extends AppCompatActivity implements Observer {
     @Bind(R.id.fabCheckIn) FloatingActionButton fabCheckIn;
     @Bind(R.id.fabReview) FloatingActionButton fabReview;
     @Bind(R.id.fabWhoHere) FloatingActionButton fabWhoHere;
-
+    @Bind(R.id.map_layout) RelativeLayout mapLayout;
     private MapFragment map;
     private ProgressDialog dialog;
     private Bar bar;
@@ -128,6 +129,13 @@ public class BarActivity extends AppCompatActivity implements Observer {
                 startActivity(intent);
             }
         });
+    }
+
+    @OnClick(R.id.btn_show_map)
+    public void showMap() {
+        Intent intent = new Intent(BarActivity.this, FullMapActivity.class);
+        intent.putExtra("bar" , bar);
+        startActivity(intent);
     }
 
     @OnClick(R.id.btnBack)

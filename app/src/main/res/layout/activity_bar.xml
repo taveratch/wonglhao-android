@@ -120,21 +120,45 @@
                     android:layout_marginTop="@dimen/itemMarginSmall"
                     android:textColor="@color/colorBaseDark" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/map"
-                    android:id="@+id/textView4"
-                    android:layout_marginTop="@dimen/itemMargin"
-                    android:textColor="@color/colorPrimary" />
-
-                <fragment
-                    android:id="@+id/map"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="@dimen/itemMarginSmall"
-                    android:name="io.taweesoft.wonglhao.ui.fragments.MapFragment"/>
+                    android:layout_height="match_parent">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/map"
+                        android:id="@+id/textView4"
+                        android:layout_marginTop="@dimen/itemMargin"
+                        android:textColor="@color/colorPrimary" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="Show Map"
+                        android:id="@+id/btn_show_map"
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
+                        android:background="@drawable/rounded_white_with_border"
+                        android:layout_gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/itemMarginSmall"
+                    android:layout_height="200dp"
+                    android:id="@+id/map_layout">
+                    <fragment
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="@dimen/itemMarginSmall"
+                        android:name="io.taweesoft.wonglhao.ui.fragments.MapFragment"/>
+                </RelativeLayout>
             </LinearLayout>
 
         </RelativeLayout>
