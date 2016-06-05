@@ -95,6 +95,7 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
     }
 
     public void initCameraCurrentLocation(Location location) {
+        if (location == null) return;
         CameraPosition position = CameraPosition.builder()
                 .target( new LatLng( mCurrentLocation.getLatitude(),
                         mCurrentLocation.getLongitude() ) )
@@ -176,7 +177,6 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
 
     private String getAddressFromLatLng( LatLng latLng ) {
         Geocoder geocoder = new Geocoder( getActivity() );
-
         String address = "";
         try {
             address = geocoder
